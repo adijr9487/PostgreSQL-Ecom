@@ -1,8 +1,10 @@
+# Database Schema
+
 ## 1. Customers
 - CustomerID: bigserial Primary Key not null, 
-- Name: varchar(100)
-- Phone: varchar(20)
-- Email: varchar(100)
+- Name: varchar(255)
+- Phone: varchar(255)
+- Email: varchar(255)
 - Address: [AddressID]
 - Wishlist: [WishlistID]
 - Orders: [OrdersID]
@@ -12,22 +14,22 @@
 
 ## 2. Admin
 - AdminID: bigserial Primary Key not null
-- Name: varchar(100)
-- Email: varchar(100)
-- Phone: varchar(20)
-- AdminPosition: varchar(20)
+- Name: varchar(255)
+- Email: varchar(255)
+- Phone: varchar(255)
+- AdminPosition: varchar(255)
 
 ## 3. Products
 - ProductID: bigserial Primary Key not null
 - CategoryID: bigserial
-- ProductName: varchar(100)
-- ProductBrand: varchar(100)
+- ProductName: varchar(255)
+- ProductBrand: varchar(255)
 - CreatedOn: timestamp
 - ModifiedOn: timestamp
 - Description: text
-- Variant_specification: [field: type]
+- Variant_specification: {field: type}
 - Review: [ReviewID]
-
+- Variant: [VariantID]
 
 ## 4. Variant
 - VariantID: bigserial Primary Key not null
@@ -43,8 +45,8 @@
 ## 5. Categories
 - CategoryID: bigserial
 - ProductID: bigserial
-- CategoryName: varchar(100)
-- Description: varchar(100)
+- CategoryName: varchar(255)
+- Description: varchar(255)
 - CreatedOn: timestamp
 - ModifiedOn: timestamp
 
@@ -60,7 +62,7 @@
 - Status: status
 
 ## 7. Order Details
-- OrderDetailsID: varchar(10)
+- OrderDetailsID: varchar(255)
 - VariantID: bigserial
 - UnitPrice: int
 - Quantity: int
@@ -86,19 +88,19 @@
 ## 10. Address
 - AddressID: bigserial
 - CustomerID: bigserial
-- Address1: varchar(100)
-- Address2: varchar(100)
-- Landmark: varchar(100)
-- City: varchar(100)
-- State: varchar(100)
-- Country: varchar(100)
-- ZipCode: varchar(6)
+- Address1: varchar(255)
+- Address2: varchar(255)
+- Landmark: varchar(255)
+- City: varchar(255)
+- State: varchar(255)
+- Country: varchar(255)
+- ZipCode: varchar(255)
 
 ## 11. Notification
 - NotificationID: bigserial
 - CustomerID: bigserial
-- Title: varchar(200)
-- Description: varchar(1000)
+- Title: varchar(255)
+- Description: varchar(255)
 
 ## 12. Discount
 - DiscountID: bigserial Primary Key not null

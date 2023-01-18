@@ -1,16 +1,16 @@
 CREATE TABLE AdminUser(
 	AdminID bigserial Primary Key not null,
-	Name varchar(100),
-	Email varchar(100),
-	Phone varchar(20),
-	AdminPosition varchar(20)
+	Name varchar(255),
+	Email varchar(255),
+	Phone varchar(255),
+	AdminPosition varchar(255)
 );
 
 CREATE TABLE Customer(
 	CustomerID bigserial Primary Key not null, 
-	Name varchar(100),
-	Phone varchar(20),
-	Email varchar(100),
+	Name varchar(255),
+	Phone varchar(255),
+	Email varchar(255),
     CreatedOn timestamp,
     ModifiedOn timestamp
 );
@@ -18,7 +18,7 @@ CREATE TABLE Customer(
 CREATE TABLE Notifications(
     NotificationID bigserial Primary Key not null,
     CustomerID bigserial, 
-    Title varchar(100),
+    Title varchar(255),
     Message text,
     CreatedOn timestamp,
     ModifiedOn timestamp
@@ -26,13 +26,13 @@ CREATE TABLE Notifications(
 
 CREATE TABLE Address(
     AddressID bigserial Primary Key not null,
-    Address1 varchar(100),
-    Address2 varchar(100),
-    Landmark varchar(100),
-    City varchar(100),
-    State varchar(100),
-    Country varchar(100),
-    ZipCode varchar(6)
+    Address1 varchar(255),
+    Address2 varchar(255),
+    Landmark varchar(255),
+    City varchar(255),
+    State varchar(255),
+    Country varchar(255),
+    ZipCode varchar(255)
 );
 
 CREATE TABLE User_Notification(
@@ -51,8 +51,8 @@ CREATE TABLE User_Address(
 
 CREATE TABLE Category(
 	CategoryID bigserial Primary Key not null,
-	CatagoryName varchar(100),
-	Description varchar(100),
+	CatagoryName varchar(255),
+	Description varchar(255),
 	CreatedOn timestamp,
 	UpdatedOn timestamp
 );
@@ -60,8 +60,8 @@ CREATE TABLE Category(
 CREATE TABLE Product(
 	ProductID bigserial Primary Key not null,
 	CategoryID bigserial,
-	ProductName varchar(100),
-	ProductBrand varchar(100),
+	ProductName varchar(255),
+	ProductBrand varchar(255),
 	Description text,
 	Variant_specification bytea,
 	CreatedOn timestamp,
