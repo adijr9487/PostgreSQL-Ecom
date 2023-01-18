@@ -1,6 +1,6 @@
 # Database Schema
 
-## 1. Customers
+### 1. Customers
 - CustomerID: bigserial Primary Key not null, 
 - Name: varchar(255)
 - Phone: varchar(255)
@@ -12,14 +12,14 @@
 - Cart: [CartID]
 - Transactions: [TransactionID]
 
-## 2. Admin
+### 2. Admin
 - AdminID: bigserial Primary Key not null
 - Name: varchar(255)
 - Email: varchar(255)
 - Phone: varchar(255)
 - AdminPosition: varchar(255)
 
-## 3. Products
+### 3. Products
 - ProductID: bigserial Primary Key not null
 - CategoryID: bigserial
 - ProductName: varchar(255)
@@ -28,21 +28,23 @@
 - ModifiedOn: timestamp
 - Description: text
 - Variant_specification: {field: type}
-- Review: [ReviewID]
 - Variant: [VariantID]
+- Reivew: [ReviewID]
 
-## 4. Variant
+### 4. Variant
 - VariantID: bigserial Primary Key not null
-- ProductID: bigserial Foreign key Reference Product(ProductID)
+- ProductID: [ProductID]
 - Default: Bool
 - BestSeller: Bool
 - Discount: Bool
 - Price: int
 - QuantityLeft: int
-- Specification: binaryvar(max)
+- Specification: bytea
 - Offers: [OfferID]
+- Review: [ReviewID]
+- OrderDetails: [OrderDetailsID]
 
-## 5. Categories
+### 5. Categories
 - CategoryID: bigserial
 - ProductID: bigserial
 - CategoryName: varchar(255)
@@ -50,7 +52,7 @@
 - CreatedOn: timestamp
 - ModifiedOn: timestamp
 
-## 6. Orders
+### 6. Orders
 - OrderID: bigserial Primary Key not null
 - OrderDetailsID: bigserial
 - TransactionID: bigserial
@@ -61,7 +63,7 @@
 - ModifiedOn: timestamp
 - Status: status
 
-## 7. Order Details
+### 7. Order Details
 - OrderDetailsID: varchar(255)
 - VariantID: bigserial
 - UnitPrice: int
@@ -69,25 +71,20 @@
 - Discount: int
 - TotalPrice: int
 
-## 8. Wishlist
+### 8. Wishlist
 - WishlistID: bigserial
-- VariantID: bigserial
+- VariantID: [VariantID]
 
-## 9. Cart
+### 9. Cart
 - CartID: bigserial
 - CustomerID: bigserial
-- VariantID: bigserial
+- VariantID: [VariantID]
 - Quantity: int
 - CreatedOn: timestamp
 - ModifiedOn: timestamp
 
-## User_Address
-- CustomerID: bigserial Foreign Key Reference not null,
-- AddressID: bigserial Foreign Key Reference not null,
-
-## 10. Address
+### 10. Address
 - AddressID: bigserial
-- CustomerID: bigserial
 - Address1: varchar(255)
 - Address2: varchar(255)
 - Landmark: varchar(255)
@@ -96,18 +93,18 @@
 - Country: varchar(255)
 - ZipCode: varchar(255)
 
-## 11. Notification
+### 11. Notification
 - NotificationID: bigserial
 - CustomerID: bigserial
 - Title: varchar(255)
 - Description: varchar(255)
 
-## 12. Discount
+### 12. Discount
 - DiscountID: bigserial Primary Key not null
 - Type: ENUM(Percentage, Fixed)
 - Vale: int
 
-## 13. Review
+### 13. Review
 - ReviewID: bigserial
 - CustomerID: bigserial
 - ProductID: bigserial Forieng Key Refenrence Product(ProductID)
@@ -116,7 +113,7 @@
 - CreatedOn: timestamp
 - UpdatedOn: Timestamp
 
-## 14. Transactions
+### 14. Transactions
 - TransactionID: bigserial
 - PaymentID: bigserial
 - CustimerID: bigserial
