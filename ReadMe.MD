@@ -1,45 +1,44 @@
 ## 1. Customers
-'CustomerID': bigserial Primary Key not null, 
-'Name': varchar(100)
-'Address': [AddressID]
-'Phone': varchar(20)
-'Email': varchar(100)
-'Wishlist': [WishlistID]
-'Orders': [OrdersID]
-'Notifications': [NotificationID]
-'Cart': [CartID]
-'Transactions': [TransactionID]
+###CustomerID: bigserial Primary Key not null, 
+###Name: varchar(100)
+-Phone: varchar(20)
+-Email: varchar(100)
+-Address: [AddressID]
+-Wishlist: [WishlistID]
+-Orders: [OrdersID]
+-Notifications: [NotificationID]
+-Cart: [CartID]
+-Transactions: [TransactionID]
 
 ## 2. Admin
-'AdminID': bigserial Primary Key not null
-'Name': varchar(100)
-'Email': varchar(100)
-'Phone': varchar(20)
-'AdminPosition': varchar(20)
+-AdminID: bigserial Primary Key not null
+-Name: varchar(100)
+-Email: varchar(100)
+-Phone: varchar(20)
+-AdminPosition: varchar(20)
 
 ## 3. Products
-'ProductID': bigserial Primary Key not null
-'CategoryID': bigserial Primary Key not null
-'ProductName': varchar(100)
-'ProductBrand': varchar(100)
-'CreatedOn': timestamp
-'ModifiedOn': timestamp
-'Description': text
-'Variant_specification': [field: type]
-'Review': [ReviewID]
-
+-ProductID: bigserial Primary Key not null
+-CategoryID: bigserial
+-ProductName: varchar(100)
+-ProductBrand: varchar(100)
+-CreatedOn: timestamp
+-ModifiedOn: timestamp
+-Description: text
+-Variant_specification: [field: type]
+-Review: [ReviewID]
 
 
 ## 4. Variant
-'VariantID': bigserial Primary Key not null
-'ProductID': bigserial Foreign key Reference Product(ProductID)
-'Default': Bool
-'BestSeller': Bool
-'Discount': Bool
-'Price': int
-'QuantityLeft': int
-'Specification': binaryvar(max)
-'Offers': [OfferID]
+-VariantID: bigserial Primary Key not null
+-ProductID: bigserial Foreign key Reference Product(ProductID)
+-Default: Bool
+-BestSeller: Bool
+-Discount: Bool
+-Price: int
+-QuantityLeft: int
+-Specification: binaryvar(max)
+-Offers: [OfferID]
 
 ## 5. Categories
 CategoryID: bigserial
@@ -98,11 +97,6 @@ Description: varchar(1000)
 'Type': ENUM('Percentage', 'Fixed')
 'Vale': int
 
-## 12. Offer
-OfferID: bigserial
-Title: varchar(200)
-Decription: varchar(200)
-
 ## 13. Review
 ReviewID: bigserial
 CustomerID: bigserial
@@ -117,9 +111,3 @@ TransactionID: bigserial
 PaymentID: bigserial
 CustimerID: bigserial
 TransactionData: date
-
-## 15.Payment
-PaymentID: bigserial
-Amount: int
-Type: enum('Cash', 'Card', 'UPI', 'NetBanking', 'Wallet')
-Status: enum('Pending', 'Success', 'Failed')
